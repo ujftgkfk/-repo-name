@@ -6,6 +6,40 @@ A comprehensive investment management and risk analytics platform inspired by Bl
 ![Stack](https://img.shields.io/badge/Stack-PERN-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
+## 📚 Документация
+
+- **[INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md)** - Подробная пошаговая инструкция по установке (для новичков)
+- **[QUICK_START.md](QUICK_START.md)** - Быстрый старт для опытных пользователей
+- **[API_EXAMPLES.md](API_EXAMPLES.md)** - Примеры использования API с curl, JavaScript, TypeScript
+
+### 🚀 Быстрая установка
+
+**Автоматическая установка (рекомендуется):**
+
+```bash
+# Linux/macOS
+./setup.sh
+
+# Windows
+setup.bat
+```
+
+**Или вручную:**
+```bash
+npm install
+cd backend && npm install
+cd ../frontend && npm install
+createdb aladdin_db
+cd backend && cp .env.example .env
+# Отредактируйте .env с вашим паролем PostgreSQL
+npm run db:seed
+cd .. && npm run dev
+```
+
+Откройте: http://localhost:3000
+
+---
+
 ## Features
 
 ### Core Capabilities

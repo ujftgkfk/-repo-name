@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Змейка - Snake Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Змейка</h1>
+        <div class="score-board">
+            <div class="score">Счёт: <span id="score">0</span></div>
+            <div class="high-score">Рекорд: <span id="highScore">0</span></div>
+        </div>
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+        <div class="controls">
+            <button id="startBtn">Начать игру</button>
+            <button id="pauseBtn" disabled>Пауза</button>
+        </div>
+        <div class="instructions">
+            <h3>Управление:</h3>
+            <p>Используйте стрелки ← ↑ → ↓ для управления змейкой</p>
+            <p>Собирайте красные яблоки, чтобы расти и набирать очки!</p>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>

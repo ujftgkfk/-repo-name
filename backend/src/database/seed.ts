@@ -1,6 +1,8 @@
 import { sequelize } from './connection';
 import { User } from '../models/User';
 import { Bet } from '../models/Bet';
+import { Provider } from '../models/Provider';
+import { providerService } from '../services/ProviderService';
 
 async function seed() {
   try {
@@ -18,6 +20,52 @@ async function seed() {
     });
 
     console.log(`Created demo user with ID: ${demoUser.id}`);
+
+    // Create providers
+    const providers = await Provider.bulkCreate([
+      {
+        name: 'Pragmatic Play',
+        slug: 'pragmatic-play',
+        displayName: 'Pragmatic Play',
+        logo: 'https://via.placeholder.com/150x50?text=Pragmatic+Play',
+        apiEndpoint: 'mock',
+        apiKey: 'mock-api-key',
+        isActive: true,
+        isMock: true,
+        config: { secretKey: 'mock-secret' },
+      },
+      {
+        name: 'Evolution Gaming',
+        slug: 'evolution',
+        displayName: 'Evolution Gaming',
+        logo: 'https://via.placeholder.com/150x50?text=Evolution',
+        apiEndpoint: 'mock',
+        apiKey: 'mock-api-key',
+        isActive: true,
+        isMock: true,
+        config: { secretKey: 'mock-secret' },
+      },
+      {
+        name: 'NetEnt',
+        slug: 'netent',
+        displayName: 'NetEnt',
+        logo: 'https://via.placeholder.com/150x50?text=NetEnt',
+        apiEndpoint: 'mock',
+        apiKey: 'mock-api-key',
+        isActive: true,
+        isMock: true,
+        config: { secretKey: 'mock-secret' },
+      },
+    ]);
+
+    console.log(`Created ${providers.length} providers.`);
+
+    // Sync games from each provider
+    for (const provider of providers) {
+      console.log(`Syncing games from ${provider.displayName}...`);
+      const result = await providerService.syncProviderGames(provider.slug);
+      console.log(`Synced ${result.synced} games from ${provider.displayName}`);
+    }
 
     // Create some sample bets for history
     const sampleBets = [
@@ -68,11 +116,13 @@ async function seed() {
     }
 
     console.log(`Created ${sampleBets.length} sample bets.`);
-    console.log('\nSeed completed successfully!');
+    console.log('\n=== Seed completed successfully! ===');
     console.log('\nDemo credentials:');
     console.log('Username: demo');
     console.log(`User ID: ${demoUser.id}`);
     console.log('Starting Balance: $10,000.00');
+    console.log('\nProviders:');
+    providers.forEach(p => console.log(`- ${p.displayName}`));
 
     process.exit(0);
   } catch (error) {

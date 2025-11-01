@@ -7,6 +7,7 @@ import dotenv from 'dotenv';
 import { sequelize } from './database/connection';
 import walletRoutes from './routes/wallet.routes';
 import gamesRoutes from './routes/games.routes';
+import providersRoutes from './routes/providers.routes';
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ app.get('/health', (req, res) => {
 const API_VERSION = process.env.API_VERSION || 'v1';
 app.use(`/api/${API_VERSION}/wallet`, walletRoutes);
 app.use(`/api/${API_VERSION}/games`, gamesRoutes);
+app.use(`/api/${API_VERSION}`, providersRoutes);
 
 // Error handling
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {

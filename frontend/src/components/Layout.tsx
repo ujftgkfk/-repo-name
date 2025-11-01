@@ -33,8 +33,11 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
+import { Gamepad as GamepadIcon } from '@mui/icons-material';
+
 const menuItems = [
   { text: 'Casino', icon: <CasinoIcon />, path: '/casino' },
+  { text: 'Provider Games', icon: <GamepadIcon />, path: '/provider-games' },
   { text: 'Dice', icon: <DiceIcon />, path: '/dice' },
   { text: 'Slots', icon: <SlotsIcon />, path: '/slots' },
   { text: 'Roulette', icon: <RouletteIcon />, path: '/roulette' },

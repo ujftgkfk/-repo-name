@@ -6,6 +6,7 @@ import SlotsGame from './pages/SlotsGame';
 import RouletteGame from './pages/RouletteGame';
 import BlackjackGame from './pages/BlackjackGame';
 import History from './pages/History';
+import ProviderGames from './pages/ProviderGames';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/casino" replace />} />
         <Route path="/casino" element={<Casino />} />
+        <Route path="/provider-games" element={<ProviderGames />} />
         <Route path="/dice" element={<DiceGame />} />
         <Route path="/slots" element={<SlotsGame />} />
         <Route path="/roulette" element={<RouletteGame />} />

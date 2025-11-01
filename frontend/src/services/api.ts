@@ -28,4 +28,17 @@ export const gameApi = {
   getUserStats: (userId: number) => api.get(`/games/stats/${userId}`)
 };
 
+// Provider APIs
+export const providerApi = {
+  getAllProviders: () => api.get('/providers'),
+  getProviderGames: (providerSlug: string) => api.get(`/providers/${providerSlug}/games`),
+  getAllGames: (params?: { category?: string; search?: string; limit?: number }) =>
+    api.get('/games', { params }),
+  getPopularGames: (limit?: number) => api.get('/games/popular', { params: { limit } }),
+  getGamesByCategory: (category: string, limit?: number) =>
+    api.get(`/games/category/${category}`, { params: { limit } }),
+  launchGame: (userId: number, gameId: number, isDemo?: boolean) =>
+    api.post('/games/launch', { userId, gameId, isDemo }),
+};
+
 export default api;

@@ -1,13 +1,21 @@
 import { useNavigate } from 'react-router-dom';
-import { Container, Typography, Grid, Card, CardActionArea, CardContent, Box } from '@mui/material';
+import { Container, Typography, Grid, Card, CardActionArea, CardContent, Box, Button } from '@mui/material';
 import {
   Circle as DiceIcon,
   ViewCarousel as SlotsIcon,
   Album as RouletteIcon,
-  Style as BlackjackIcon
+  Style as BlackjackIcon,
+  Gamepad as GamepadIcon
 } from '@mui/icons-material';
 
 const games = [
+  {
+    name: 'Provider Games',
+    icon: GamepadIcon,
+    path: '/provider-games',
+    description: 'Slots & Live Casino from Pragmatic Play, Evolution, NetEnt',
+    color: '#3B82F6'
+  },
   {
     name: 'Dice',
     icon: DiceIcon,
@@ -54,7 +62,7 @@ export default function Casino() {
 
       <Grid container spacing={3}>
         {games.map((game) => (
-          <Grid item xs={12} sm={6} md={3} key={game.name}>
+          <Grid item xs={12} sm={6} md={game.name === 'Provider Games' ? 12 : 3} key={game.name}>
             <Card
               sx={{
                 height: '100%',

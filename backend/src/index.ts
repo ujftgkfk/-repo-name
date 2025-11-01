@@ -5,11 +5,8 @@ import compression from 'compression';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import { sequelize } from './database/connection';
-import portfolioRoutes from './routes/portfolio.routes';
-import assetRoutes from './routes/asset.routes';
-import tradeRoutes from './routes/trade.routes';
-import riskRoutes from './routes/risk.routes';
-import analyticsRoutes from './routes/analytics.routes';
+import walletRoutes from './routes/wallet.routes';
+import gamesRoutes from './routes/games.routes';
 
 dotenv.config();
 
@@ -34,11 +31,8 @@ app.get('/health', (req, res) => {
 
 // API Routes
 const API_VERSION = process.env.API_VERSION || 'v1';
-app.use(`/api/${API_VERSION}/portfolios`, portfolioRoutes);
-app.use(`/api/${API_VERSION}/assets`, assetRoutes);
-app.use(`/api/${API_VERSION}/trades`, tradeRoutes);
-app.use(`/api/${API_VERSION}/risk`, riskRoutes);
-app.use(`/api/${API_VERSION}/analytics`, analyticsRoutes);
+app.use(`/api/${API_VERSION}/wallet`, walletRoutes);
+app.use(`/api/${API_VERSION}/games`, gamesRoutes);
 
 // Error handling
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -64,7 +58,7 @@ const startServer = async () => {
     }
 
     app.listen(PORT, () => {
-      console.log(`Aladdin Backend Server running on port ${PORT}`);
+      console.log(`Stake Casino Backend Server running on port ${PORT}`);
       console.log(`Environment: ${process.env.NODE_ENV}`);
       console.log(`API Version: ${API_VERSION}`);
     });

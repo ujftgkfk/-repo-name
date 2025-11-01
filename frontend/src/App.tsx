@@ -1,26 +1,23 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Box } from '@mui/material';
 import Layout from './components/Layout';
-import Dashboard from './pages/Dashboard';
-import Portfolios from './pages/Portfolios';
-import PortfolioDetail from './pages/PortfolioDetail';
-import Trading from './pages/Trading';
-import RiskAnalysis from './pages/RiskAnalysis';
-import Assets from './pages/Assets';
-import Analytics from './pages/Analytics';
+import Casino from './pages/Casino';
+import DiceGame from './pages/DiceGame';
+import SlotsGame from './pages/SlotsGame';
+import RouletteGame from './pages/RouletteGame';
+import BlackjackGame from './pages/BlackjackGame';
+import History from './pages/History';
 
 function App() {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<Navigate to="/dashboard" replace />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/portfolios" element={<Portfolios />} />
-        <Route path="/portfolios/:id" element={<PortfolioDetail />} />
-        <Route path="/trading" element={<Trading />} />
-        <Route path="/risk" element={<RiskAnalysis />} />
-        <Route path="/assets" element={<Assets />} />
-        <Route path="/analytics" element={<Analytics />} />
+        <Route path="/" element={<Navigate to="/casino" replace />} />
+        <Route path="/casino" element={<Casino />} />
+        <Route path="/dice" element={<DiceGame />} />
+        <Route path="/slots" element={<SlotsGame />} />
+        <Route path="/roulette" element={<RouletteGame />} />
+        <Route path="/blackjack" element={<BlackjackGame />} />
+        <Route path="/history" element={<History />} />
       </Routes>
     </Layout>
   );

@@ -2,39 +2,44 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
+    mode: 'dark',
     primary: {
-      main: '#1976d2',
-      light: '#42a5f5',
-      dark: '#1565c0'
+      main: '#00e599',
+      light: '#33eaad',
+      dark: '#00b377'
     },
     secondary: {
-      main: '#dc004e',
-      light: '#e33371',
-      dark: '#9a0036'
+      main: '#7F3FF2',
+      light: '#9965f4',
+      dark: '#662cbf'
     },
     success: {
-      main: '#2e7d32',
-      light: '#4caf50',
-      dark: '#1b5e20'
+      main: '#00e599',
+      light: '#33eaad',
+      dark: '#00b377'
     },
     error: {
-      main: '#d32f2f',
-      light: '#ef5350',
-      dark: '#c62828'
+      main: '#FF4C5A',
+      light: '#ff7078',
+      dark: '#cc3d48'
     },
     warning: {
-      main: '#ed6c02',
-      light: '#ff9800',
-      dark: '#e65100'
+      main: '#FFA500',
+      light: '#ffb733',
+      dark: '#cc8400'
     },
     info: {
-      main: '#0288d1',
-      light: '#03a9f4',
-      dark: '#01579b'
+      main: '#3B82F6',
+      light: '#629bf8',
+      dark: '#2f68c5'
     },
     background: {
-      default: '#f5f5f5',
-      paper: '#ffffff'
+      default: '#0f121a',
+      paper: '#1a1e2e'
+    },
+    text: {
+      primary: '#ffffff',
+      secondary: '#9ca3af'
     }
   },
   typography: {

@@ -9,51 +9,23 @@ const api = axios.create({
   }
 });
 
-// Portfolio APIs
-export const portfolioApi = {
-  getAll: () => api.get('/portfolios'),
-  getById: (id: string) => api.get(`/portfolios/${id}`),
-  create: (data: any) => api.post('/portfolios', data),
-  update: (id: string, data: any) => api.put(`/portfolios/${id}`, data),
-  delete: (id: string) => api.delete(`/portfolios/${id}`),
-  getPositions: (id: string) => api.get(`/portfolios/${id}/positions`),
-  updateValues: (id: string) => api.post(`/portfolios/${id}/update-values`)
+// Wallet APIs
+export const walletApi = {
+  getUser: (userId: number) => api.get(`/wallet/users/${userId}`),
+  createUser: (username: string) => api.post('/wallet/users', { username }),
+  getBalance: (userId: number) => api.get(`/wallet/users/${userId}/balance`),
+  deposit: (userId: number, amount: number) => api.post(`/wallet/users/${userId}/deposit`, { amount })
 };
 
-// Asset APIs
-export const assetApi = {
-  getAll: (params?: any) => api.get('/assets', { params }),
-  getById: (id: string) => api.get(`/assets/${id}`),
-  create: (data: any) => api.post('/assets', data),
-  update: (id: string, data: any) => api.put(`/assets/${id}`, data),
-  updatePrice: (id: string, price: number) => api.patch(`/assets/${id}/price`, { currentPrice: price }),
-  delete: (id: string) => api.delete(`/assets/${id}`)
-};
-
-// Trade APIs
-export const tradeApi = {
-  getAll: (params?: any) => api.get('/trades', { params }),
-  getById: (id: string) => api.get(`/trades/${id}`),
-  create: (data: any) => api.post('/trades', data),
-  execute: (id: string) => api.post(`/trades/${id}/execute`),
-  cancel: (id: string) => api.post(`/trades/${id}/cancel`)
-};
-
-// Risk APIs
-export const riskApi = {
-  analyzePortfolio: (portfolioId: string) => api.get(`/risk/portfolio/${portfolioId}/analyze`),
-  runScenarios: (portfolioId: string) => api.get(`/risk/portfolio/${portfolioId}/scenarios`),
-  getHistory: (portfolioId: string, days?: number) =>
-    api.get(`/risk/portfolio/${portfolioId}/history`, { params: { days } })
-};
-
-// Analytics APIs
-export const analyticsApi = {
-  getDashboard: () => api.get('/analytics/dashboard'),
-  getPerformance: (portfolioId: string) => api.get(`/analytics/portfolio/${portfolioId}/performance`),
-  getAllocation: (portfolioId: string) => api.get(`/analytics/portfolio/${portfolioId}/allocation`),
-  getTradeHistory: (portfolioId: string, params?: any) =>
-    api.get(`/analytics/portfolio/${portfolioId}/trades`, { params })
+// Game APIs
+export const gameApi = {
+  playDice: (data: any) => api.post('/games/dice', data),
+  playSlots: (data: any) => api.post('/games/slots', data),
+  playRoulette: (data: any) => api.post('/games/roulette', data),
+  playBlackjack: (data: any) => api.post('/games/blackjack', data),
+  getBetHistory: (userId: number, game?: string, limit?: number) =>
+    api.get(`/games/bets/${userId}`, { params: { game, limit } }),
+  getUserStats: (userId: number) => api.get(`/games/stats/${userId}`)
 };
 
 export default api;

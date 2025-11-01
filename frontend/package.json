@@ -1,7 +1,7 @@
 {
-  "name": "aladdin-frontend",
+  "name": "stake-casino-frontend",
   "version": "1.0.0",
-  "description": "Aladdin Clone - Frontend Application",
+  "description": "Stake Casino - Frontend Application",
   "private": true,
   "scripts": {
     "dev": "vite",

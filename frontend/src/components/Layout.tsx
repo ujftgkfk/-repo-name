@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
   Box,
@@ -12,38 +12,54 @@ import {
   ListItem,
   ListItemButton,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  Chip
 } from '@mui/material';
 import {
   Menu as MenuIcon,
-  Dashboard as DashboardIcon,
-  AccountBalance as AccountBalanceIcon,
-  TrendingUp as TrendingUpIcon,
-  Warning as WarningIcon,
-  ShowChart as ShowChartIcon,
-  BusinessCenter as BusinessCenterIcon,
-  Analytics as AnalyticsIcon
+  Casino as CasinoIcon,
+  ViewCarousel as SlotsIcon,
+  Circle as DiceIcon,
+  Album as RouletteIcon,
+  Style as BlackjackIcon,
+  History as HistoryIcon
 } from '@mui/icons-material';
+import { walletApi } from '../services/api';
 
 const drawerWidth = 240;
+const USER_ID = 1; // Demo user ID
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const menuItems = [
-  { text: 'Dashboard', icon: <DashboardIcon />, path: '/dashboard' },
-  { text: 'Portfolios', icon: <AccountBalanceIcon />, path: '/portfolios' },
-  { text: 'Trading', icon: <TrendingUpIcon />, path: '/trading' },
-  { text: 'Risk Analysis', icon: <WarningIcon />, path: '/risk' },
-  { text: 'Assets', icon: <ShowChartIcon />, path: '/assets' },
-  { text: 'Analytics', icon: <AnalyticsIcon />, path: '/analytics' }
+  { text: 'Casino', icon: <CasinoIcon />, path: '/casino' },
+  { text: 'Dice', icon: <DiceIcon />, path: '/dice' },
+  { text: 'Slots', icon: <SlotsIcon />, path: '/slots' },
+  { text: 'Roulette', icon: <RouletteIcon />, path: '/roulette' },
+  { text: 'Blackjack', icon: <BlackjackIcon />, path: '/blackjack' },
+  { text: 'History', icon: <HistoryIcon />, path: '/history' }
 ];
 
 export default function Layout({ children }: LayoutProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [balance, setBalance] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    fetchBalance();
+  }, []);
+
+  const fetchBalance = async () => {
+    try {
+      const response = await walletApi.getBalance(USER_ID);
+      setBalance(response.data.balance);
+    } catch (error) {
+      console.error('Error fetching balance:', error);
+    }
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -52,9 +68,9 @@ export default function Layout({ children }: LayoutProps) {
   const drawer = (
     <div>
       <Toolbar>
-        <BusinessCenterIcon sx={{ mr: 1, color: 'primary.main' }} />
-        <Typography variant="h6" noWrap component="div" color="primary">
-          Aladdin
+        <CasinoIcon sx={{ mr: 1, color: 'primary.main', fontSize: 32 }} />
+        <Typography variant="h5" noWrap component="div" color="primary" fontWeight="bold">
+          STAKE
         </Typography>
       </Toolbar>
       <Divider />
@@ -67,8 +83,18 @@ export default function Layout({ children }: LayoutProps) {
                 navigate(item.path);
                 setMobileOpen(false);
               }}
+              sx={{
+                '&.Mui-selected': {
+                  bgcolor: 'primary.main',
+                  '&:hover': {
+                    bgcolor: 'primary.dark',
+                  }
+                }
+              }}
             >
-              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemIcon sx={{ color: location.pathname === item.path ? '#fff' : 'inherit' }}>
+                {item.icon}
+              </ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
           </ListItem>
@@ -83,7 +109,8 @@ export default function Layout({ children }: LayoutProps) {
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` }
+          ml: { sm: `${drawerWidth}px` },
+          bgcolor: 'background.paper'
         }}
       >
         <Toolbar>
@@ -97,11 +124,13 @@ export default function Layout({ children }: LayoutProps) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-            Investment Management Platform
+            Online Casino
           </Typography>
-          <Typography variant="body2" sx={{ opacity: 0.8 }}>
-            BlackRock Aladdin Clone
-          </Typography>
+          <Chip
+            label={`$${balance.toFixed(2)}`}
+            color="primary"
+            sx={{ fontWeight: 'bold', fontSize: '1rem', px: 1 }}
+          />
         </Toolbar>
       </AppBar>
       <Box
@@ -117,7 +146,7 @@ export default function Layout({ children }: LayoutProps) {
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, bgcolor: 'background.paper' }
           }}
         >
           {drawer}
@@ -126,7 +155,7 @@ export default function Layout({ children }: LayoutProps) {
           variant="permanent"
           sx={{
             display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, bgcolor: 'background.paper' }
           }}
           open
         >

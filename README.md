@@ -1,53 +1,57 @@
-# Aladdin Clone - Investment Management Platform
+# Stake Casino - Online Casino Platform
 
-A comprehensive investment management and risk analytics platform inspired by BlackRock's Aladdin. This application provides portfolio management, trading operations, risk analysis, and advanced analytics capabilities.
+A comprehensive online casino platform inspired by Stake.com. This application provides casino games including Dice, Slots, Roulette, and Blackjack with a modern, sleek interface and provably fair gaming.
 
-![Platform](https://img.shields.io/badge/Platform-Investment_Management-blue)
+![Platform](https://img.shields.io/badge/Platform-Casino-red)
 ![Stack](https://img.shields.io/badge/Stack-PERN-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ## Features
 
-### Core Capabilities
+### Casino Games
 
-- **Portfolio Management**
-  - Create and manage multiple investment portfolios
-  - Track positions across different asset classes
-  - Real-time portfolio valuation and P&L tracking
-  - Cash balance management
+- **Dice Game**
+  - Adjustable multiplier and win chance
+  - Provably fair system
+  - Real-time animations
+  - Manual and auto-bet modes
 
-- **Risk Analytics Engine**
-  - Value at Risk (VaR) calculations at 95% and 99% confidence levels
-  - Sharpe Ratio calculation for risk-adjusted returns
-  - Portfolio volatility and beta metrics
-  - Maximum drawdown analysis
-  - Concentration risk measurement (Herfindahl Index)
-  - Scenario analysis and stress testing
+- **Slots Game**
+  - 5-reel slot machine
+  - Multiple paylines
+  - Animated reels
+  - Bonus features
+  - Various symbols and combinations
 
-- **Trading Operations**
-  - Create buy/sell orders
-  - Execute trades with automatic position updates
-  - Trade history and audit trail
-  - Real-time order management
+- **Roulette**
+  - European roulette wheel
+  - Multiple betting options (straight, split, street, etc.)
+  - Realistic wheel animation
+  - Betting history
 
-- **Advanced Analytics**
-  - Portfolio performance metrics
-  - Asset allocation visualization
-  - Sector and asset type exposure analysis
-  - Top holdings analysis
-  - Historical trade analytics
+- **Blackjack**
+  - Classic blackjack rules
+  - Hit, stand, double down, split
+  - Dealer AI
+  - Multiple hands support
 
-- **Asset Management**
-  - Support for multiple asset classes:
-    - Stocks
-    - Bonds
-    - ETFs
-    - Options & Futures
-    - Forex
-    - Cryptocurrencies
-    - Commodities
-    - Real Estate
-    - Private Equity
+### Core Features
+
+- **Wallet System**
+  - Real-time balance tracking
+  - Deposit and withdrawal
+  - Transaction history
+  - Bet tracking
+
+- **Provably Fair**
+  - Cryptographic verification
+  - Server and client seeds
+  - Verifiable results
+
+- **Game History**
+  - Complete bet history
+  - Win/loss tracking
+  - Statistics and analytics
 
 ## Technology Stack
 

@@ -1,7 +1,7 @@
 {
-  "name": "aladdin-clone",
+  "name": "stake-casino",
   "version": "1.0.0",
-  "description": "Aladdin by BlackRock clone - Investment management and risk analytics platform",
+  "description": "Stake-like casino website with slots, dice, roulette, and blackjack games",
   "private": true,
   "workspaces": [
     "backend",
@@ -20,12 +20,14 @@
     "start:frontend": "cd frontend && npm start"
   },
   "keywords": [
-    "aladdin",
-    "blackrock",
-    "portfolio-management",
-    "risk-analytics",
-    "investment",
-    "fintech"
+    "casino",
+    "stake",
+    "gambling",
+    "slots",
+    "dice",
+    "roulette",
+    "blackjack",
+    "crypto-casino"
   ],
   "author": "",
   "license": "MIT",
